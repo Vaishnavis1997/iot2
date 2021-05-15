@@ -1,32 +1,22 @@
 import pymysql
-
-conn =pymysql.connect(database="db1",user="vaishnavi",password="12345",host="localhost")
+conn =pymysql.connect(database="yshnavi",user="Vaishnavi",password="246",host="localhost")
 cur=conn.cursor()
-
-#create database
-#cur.execute("CREATE TABLE users(id int primary, name text, age int, gender text, address text);")
-
-#to store user data
-
 name = "vaishnavi"
-age = 24
-gender = "f"
-address = "kerala"
-
+age=24
+gender="f"
+address="kerala"
 data={'name':name,'age':age,'gender':gender,'address':address}
 print(data)
-
-# Saving data to DB
+{'name':'vaishnavi','age':24,'gender':'f','address':'kerala'}
 cur.execute("INSERT INTO users (name,age,gender,address) VALUES (%(name)s,%(age)s,%(gender)s,%(address)s);",data)
+1
 conn.commit()
 print("saved to db")
-
-#reading data from DB
+saved to db
 cur.execute("SELECT * FROM users;")
-#get one row
 data1=cur.fetchone()
-#get all rows
 data2=cur.fetchall()
-
 print(data1)
+('vaishnavi',24,'f','kerala')
 print(data2)
+
